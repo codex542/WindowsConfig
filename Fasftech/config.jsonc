@@ -1,0 +1,99 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "builtin",
+        "source": "windows",
+        "color": {
+            "1": "#e0271f",
+            "2": "#8b93a0"
+        },
+        "padding": {
+            "top": 1,
+            "right": 2
+        }
+    },
+    "display": {
+        "separator": "  ",
+        "color": {
+            "keys": "#8b93a0",
+            "title": "#e0271f"
+        },
+        "key": {
+            "width": 10
+        },
+        "percent": {
+            "type": 9,
+            "color": {
+                "green": "#e0271f",
+                "yellow": "#d97a2e",
+                "red": "#d97a2e"
+            }
+        }
+    },
+    "modules": [
+        {
+            "type": "os",
+            "key": " OS",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "custom",
+            "format": "{##8b93a0} WM{#}      GlazeWM"
+        },
+        {
+            "type": "kernel",
+            "key": "Kernel",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "uptime",
+            "key": " Uptime",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "packages",
+            "key": " Packages",
+            "keyColor": "#8b93a0"
+        },
+        "break",
+        {
+            "type": "shell",
+            "key": " Shell",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "terminal",
+            "key": " Terminal ",
+            "keyColor": "#8b93a0"
+        },
+        "break",
+        {
+            "type": "cpu",
+            "key": "CPU",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "gpu",
+            "key": "GPU",
+            "keyColor": "#8b93a0"
+        },
+        {
+            "type": "memory",
+            "key": "Memory",
+            "keyColor": "#8b93a0",
+            "percent": {
+                "type": 3
+            }
+        },
+        {
+            "type": "disk",
+            "key": "Disk",
+            "keyColor": "#8b93a0",
+            "folders": "C:",
+            "percent": {
+                "type": 3
+            }
+        },
+        "break"
+    ]
+}

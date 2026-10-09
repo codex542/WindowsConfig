@@ -1,0 +1,769 @@
+:root {
+    --bg-bar: #12151b;
+    --bg-panel: rgba(15, 18, 24, 0.94);
+    --bg-panel-solid: #0e1116;
+    --bg-row-hover: rgba(255, 255, 255, 0.06);
+    --bg-row-active: rgba(224, 39, 31, 0.14);
+    --panel-border: rgba(255, 255, 255, 0.10);
+    --divider: rgba(255, 255, 255, 0.08);
+    --text: #e8eaef;
+    --text-muted: #8b93a0;
+    --text-dim: #565f6c;
+    --accent: #e0271f;
+    --accent-strong: #ff4a30;
+    --accent-soft: rgba(224, 39, 31, 0.16);
+    --critical: #d97a2e;
+}
+*{
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 600;
+    font-family: "JetBrainsMono NFP";
+    margin: 0;
+    padding: 0;
+}
+/*GENERAL CONFIGRATIONS*/
+.yasb-bar {
+	padding: 0;
+	margin: 0;
+    background-color: var(--bg-bar);
+    border-radius: 0px;
+}
+.widget {
+    padding: 0 4px;
+    margin: 0 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0);
+}
+.widget .icon {
+    font-size: 18px;
+}
+.widget .label {
+    color: var(--text);
+}
+/*WIDGET*/
+.home-widget {
+    padding-right: 0px;
+    padding-bottom: 1px;
+}
+/*HOME WIDGET DROPDOWN*/
+.home-menu {
+    background-color: var(--bg-panel-solid);
+    padding: 0;
+    margin-left: 0px;
+}
+.home-menu .menu-item {
+    padding: 6px 48px 7px 16px;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+.home-menu .menu-item:hover {
+    background-color: var(--bg-row-hover);
+    color: var(--text);
+}
+.home-menu .separator {
+    max-height: 1px;
+    background-color: var(--divider);
+}
+/*GLAZEWM WORKSPACES WIDGET*/
+.glazewm-workspaces {
+    padding: 0 0px;
+    margin: 0;
+}
+.glazewm-workspaces .ws-btn {
+	font-size: 14px;
+    border: none;
+    color: var(--text-dim);
+	margin: 0 0px 0 0px;
+    height: 30px;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0);
+    transition: color 150ms ease-in-out, border-bottom-color 150ms ease-in-out;
+}
+.glazewm-workspaces .ws-btn:hover {
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+}
+.glazewm-workspaces .ws-btn.populated {
+	color: var(--text-muted);
+}
+.glazewm-workspaces .ws-btn.empty {
+    color: var(--text-dim);
+}
+.glazewm-workspaces .ws-btn.active_populated,
+.glazewm-workspaces .ws-btn.focused_populated {
+    color: var(--accent);
+    font-weight: 900;
+    border-bottom-color: var(--accent);
+}
+.glazewm-workspaces .ws-btn.active_empty,
+.glazewm-workspaces .ws-btn.focused_empty {
+    color: var(--accent-strong);
+    font-weight: 900;
+    border-bottom-color: var(--accent-strong);
+}
+.glazewm-workspaces .offline-status {
+    color: var(--critical);
+    font-size: 12px;
+    padding: 0 8px;
+}
+/*WEATHER WIDGET*/
+.weather-widget {
+    padding: 0;
+    padding-left: -5
+}
+.weather-widget .icon {
+    color: var(--accent);
+    padding: 6px;
+}
+.weather-widget .label {
+    font-size: 14px;
+    font-family: Bahnschrift;
+}
+/*WEATHER WIDGET DROPDOWN*/
+.weather-card {
+    background-color: var(--bg-panel);
+}
+.weather-card-today {
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+.weather-card-today .label {
+    font-size: 12px;
+}
+.weather-card-today .label.location {
+    font-size: 24px;
+    font-weight: 700;
+}
+.weather-card-today .label.alert {
+    font-size: 12px;
+    font-weight: 700;
+    background-color: var(--accent-soft);
+    border: 1px solid rgba(224, 39, 31, 0.2);
+    color: var(--text-muted);
+    border-radius: 6px;
+    padding: 5px 0;
+}
+.weather-card-day {
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+.weather-card-day .label {
+    font-size: 12px;
+}
+/*CLOCK - CALENDAR WIDGET*/
+.clock-widget .label {
+    font-size: 14px;
+    font-family: Bahnschrift;
+}
+/*CLOCK - CALENDAR WIDGET DROPDOWN*/
+.calendar {
+    background-color: var(--bg-panel-solid);
+}
+.calendar .calendar-table,
+.calendar .calendar-table::item {
+    background-color: rgba(17, 17, 27, 0);
+    color: var(--text-muted);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;  
+}
+.calendar .calendar-table::item:selected {
+    color: var(--text);
+}
+.calendar .day-label {
+    margin-top: 20px;
+}
+.calendar .day-label,
+.calendar .month-label,
+.calendar .date-label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 700;
+    min-width: 180px;
+    max-width: 180px;
+}
+.calendar .month-label {
+    font-weight: normal;
+}
+.calendar .date-label {
+    font-size: 88px;
+    font-weight: 900;
+    color: var(--text);
+    margin-top: -20px;
+}
+/*DISK WIDGET*/
+.disk-widget {
+    padding: 0;
+}
+/*DISK DROPDOWN*/
+.disk-group {
+    background-color: var(--bg-panel-solid);    
+}
+.disk-group-row {
+    min-width: 220px;
+    max-width: 220px;
+    max-height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(128, 128, 128, 0);
+}
+.disk-group-row:hover {
+    background-color: var(--bg-row-hover);
+    border: 1px solid var(--panel-border);
+}
+.disk-group-label-bar{
+    max-height: 8px;
+    border: 0px solid rgba(128, 128, 128, 0);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+.disk-group-label-bar::chunk{
+    background-color: var(--accent);
+    border-radius: 4px;
+}
+.disk-group-label {
+    font-size: 13px;
+}
+.disk-group-label-size {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+/* Disk threshold classes (low=plenty free -> critical=nearly full) */
+.disk-widget .widget-container .label.status-low {
+    color: var(--text-dim);
+}
+.disk-widget .widget-container .label.status-medium {
+    color: var(--text-muted);
+}
+.disk-widget .widget-container .label.status-high {
+    color: var(--accent);
+}
+.disk-widget .widget-container .label.status-critical {
+    color: var(--critical);
+}
+/*AUDIO WIDGET*/
+.volume-widget {
+    margin-left: 0;
+    padding: 0;
+}
+.volume-widget .icon {
+    padding: 0 6px;
+    color: var(--text-muted);
+}
+.volume-widget .label {
+    font-size: 14px;
+    font-family: Bahnschrift;
+}
+/*AUDIO DROPDOWN*/
+.audio-menu {
+    background-color: var(--bg-panel-solid);
+}
+.audio-container .device {
+    font-family: Bahnschrift;
+    background-color: transparent;
+    border: none;
+    padding:6px 8px 6px 4px;
+    margin: 2px 0;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.audio-container .device.selected {
+    background-color: var(--bg-row-active);
+}
+.audio-container .device:hover {
+    background-color: var(--bg-row-hover);
+}
+
+/*MEDIA WIDGET*/
+.media-widget .label {
+    font-family: Bahnschrift;
+    font-size: 14px;
+    padding: 0 5px 0 0px;
+}
+.media-widget {
+    padding: 0 0px 0 0px;
+}
+.media-widget .btn.play {
+    padding: 0 5px 0 0;
+}
+.media-widget .btn.prev {
+    padding: 0 10px 0 7px;
+}
+
+.media-widget .btn.play,
+.media-widget .btn.prev,
+.media-widget .btn.next {
+    font-size: 20px;
+    color: var(--text-muted);
+    padding: 0 7px 0 7px;
+}
+.media-widget .btn.play:hover,
+.media-widget .btn.prev:hover,
+.media-widget .btn.next:hover {
+    color: var(--text);
+}
+/*WIFI WIDGET*/
+.wifi-widget {
+    padding: 0;
+    margin-left: 0;
+}
+.wifi-widget .widget-container .icon {
+    padding: 0 6px;
+    color: var(--text-muted);
+}
+.wifi-widget .widget-container .label {
+    font-size: 14px;
+    font-family: Bahnschrift;
+}
+/*WIFI POPUP MENU*/
+.wifi-menu {
+    background-color: var(--bg-panel);
+    min-width: 320px;
+    min-height: 320px;
+}
+.wifi-menu .header {
+    font-family: 'Segoe UI';
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    border-bottom: 1px solid var(--divider);
+}
+.wifi-menu .progress-bar {
+    max-height: 2px;
+    color: var(--accent);
+}
+.wifi-menu .wifi-list {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+.wifi-menu .wifi-item {
+    min-height: 44px;
+    padding: 6px 12px;
+    margin: 4px 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+.wifi-menu .wifi-item:hover {
+    background-color: var(--bg-row-hover);
+}
+.wifi-menu .wifi-item[active=true] {
+    background-color: var(--bg-row-active);
+}
+.wifi-menu .wifi-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 20px;
+    color: var(--text-muted);
+    margin-right: 8px;
+}
+.wifi-menu .wifi-item .name {
+    font-family: 'Segoe UI';
+    font-size: 13px;
+    padding-right: 12px;
+}
+.wifi-menu .wifi-item .connect {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    margin-left: auto;
+}
+.wifi-menu .wifi-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+.wifi-menu .footer {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 10px 12px;
+    color: var(--text-dim);
+    background-color: rgba(255, 255, 255, 0.04);
+    border-top: 1px solid var(--divider);
+}
+/*BLUETOOTH WIDGET*/
+.bluetooth-widget {
+    padding: 0;
+}
+.bluetooth-widget .icon {
+    padding: 0 6px;
+    color: var(--text-muted);
+}
+.bluetooth-widget .label {
+    font-size: 14px;
+    font-family: Bahnschrift;
+}
+.bluetooth-widget .icon.bt-off,
+.bluetooth-widget .label.bt-off {
+    color: var(--text-dim);
+}
+.bluetooth-widget .icon.bt-on,
+.bluetooth-widget .label.bt-on {
+    color: var(--text-muted);
+}
+.bluetooth-widget .icon.bt-connected,
+.bluetooth-widget .label.bt-connected {
+    color: var(--accent);
+}
+/*BLUETOOTH POPUP MENU*/
+.bluetooth-menu {
+    background-color: var(--bg-panel);
+    min-width: 320px;
+    min-height: 360px;
+}
+.bluetooth-menu .header {
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--divider);
+}
+.bluetooth-menu .header .title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+.bluetooth-menu .header .power-button {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 11px;
+    padding: 3px 12px;
+}
+.bluetooth-menu .header .power-button:checked {
+    background-color: var(--accent);
+    color: var(--bg-bar);
+}
+.bluetooth-menu .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 12px 4px;
+    color: var(--text-dim);
+}
+.bluetooth-menu .bluetooth-item {
+    min-height: 40px;
+    padding: 4px 12px;
+    margin: 2px 4px;
+    border-radius: 6px;
+}
+.bluetooth-menu .bluetooth-item:hover {
+    background-color: var(--bg-row-hover);
+}
+.bluetooth-menu .bluetooth-item.active {
+    background-color: var(--bg-row-active);
+}
+.bluetooth-menu .bluetooth-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-right: 10px;
+}
+.bluetooth-menu .bluetooth-item .name {
+    font-size: 13px;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .status {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+.bluetooth-menu .bluetooth-item .connect {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 11px;
+}
+.bluetooth-menu .bluetooth-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+.bluetooth-menu .footer {
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-top: 1px solid var(--divider);
+}
+/*TODO WIDGET*/
+.todo-widget {
+    padding: 0 6px;
+}
+.todo-widget .icon {
+    color: var(--text-muted);
+    padding: 0;
+}
+.todo-widget .label {
+    font-size: 12px;
+}
+/*TODO POPUP MENU*/
+.todo-menu {
+    background-color: var(--bg-panel);
+    min-width: 360px;
+    max-width: 360px;
+    min-height: 460px;
+    max-height: 460px;
+}
+.todo-menu .header {
+    margin: 12px 10px;
+}
+.todo-menu .header .add-task-button,
+.todo-menu .header .tab-buttons {
+    border: none;
+    border-radius: 12px;
+    color: var(--text);
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.todo-menu .header .add-task-button:hover {
+    background-color: var(--accent-soft);
+}
+.todo-menu .header .tab-buttons.in-progress,
+.todo-menu .header .tab-buttons.completed {
+    background-color: transparent;
+}
+.todo-menu .header .tab-buttons.in-progress:checked {
+    color: var(--accent);
+}
+.todo-menu .header .tab-buttons.completed:checked {
+    color: var(--text-dim);
+}
+.todo-menu .no-tasks {
+    font-size: 16px;
+    color: var(--text-dim);
+    margin-top: 12px;
+}
+.todo-menu .no-tasks-icon {
+    font-size: 64px;
+    color: var(--text-dim);
+    margin-top: 48px;
+}
+.todo-menu .task-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin: 0 12px 8px 12px;
+    border: 1px solid var(--panel-border);
+    padding: 6px 0;
+}
+.todo-menu .task-item.expanded {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.todo-menu .task-item .title {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 8px 6px 8px;
+    margin-top: 4px;
+}
+.todo-menu .task-item.completed .title,
+.todo-menu .task-item.completed .description {
+    text-decoration: line-through;
+    color: var(--text-dim);
+}
+.todo-menu .task-item .description {
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 0 8px 6px 8px;
+}
+.todo-menu .task-checkbox {
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    margin-top: 4px;
+    font-size: 16px;
+    color: var(--text);
+}
+.todo-menu .task-checkbox:checked {
+    color: var(--text-dim);
+}
+.todo-menu .task-info-row {
+    margin-left: 8px;
+    margin-bottom: 6px;
+}
+.todo-menu .task-info-row .date-text,
+.todo-menu .task-info-row .category-text {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-right: 10px;
+}
+.todo-menu .task-info-row .date-icon,
+.todo-menu .task-info-row .category-icon {
+    color: var(--text-dim);
+    font-size: 13px;
+}
+.todo-menu .task-info-row .category-text.important,
+.todo-menu .task-info-row .category-icon.important,
+.todo-menu .task-info-row .category-text.urgent,
+.todo-menu .task-info-row .category-icon.urgent {
+    color: var(--critical);
+}
+.todo-menu .task-info-row .category-text.soon,
+.todo-menu .task-info-row .category-icon.soon,
+.todo-menu .task-info-row .category-text.today,
+.todo-menu .task-info-row .category-icon.today {
+    color: var(--accent);
+}
+.todo-menu .app-dialog {
+    background-color: var(--bg-panel-solid);
+}
+.todo-menu .app-dialog .title-field,
+.todo-menu .app-dialog .desc-field {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+    padding: 0 6px;
+    font-size: 12px;
+    color: var(--text);
+    min-height: 30px;
+}
+.todo-menu .app-dialog .button {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--text);
+    min-width: 80px;
+    min-height: 28px;
+}
+.todo-menu .app-dialog .button.add {
+    background-color: var(--accent);
+    color: var(--bg-bar);
+}
+.todo-menu .app-dialog .category-button:checked {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: var(--text);
+}
+/*WALLPAPERS WIDGET*/
+.wallpapers-widget {
+    padding: 0;
+}
+/*WALLPAPERS GALLERY*/
+.wallpapers-gallery-window {
+    background-color: var(--bg-panel-solid);
+    border: 0;
+    margin: 0;
+}
+.wallpapers-gallery-buttons {
+    font-size: 12px;
+    font-family: 'Bahnschrift', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(255, 255, 255, 0);
+    color: var(--text);
+    border: none;
+    font-size: 14px;
+    padding: 8px 0;
+    border-radius: 8px;
+    margin: 0 8px 8px 8px;
+    width: 600px;
+}
+.wallpapers-gallery-buttons:hover {
+    background-color: rgba(255, 255, 255, 0.1)
+}
+.wallpapers-gallery-image {
+    border: 4px solid transparent;
+    border-radius: 10px;
+}
+.wallpapers-gallery-image:hover {
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+.wallpapers-gallery-image.focused {
+    border: 4px solid var(--accent);
+}
+/*POWER WIDGET*/
+.power-menu-widget {
+    padding-left: 0;
+}
+.power-menu-widget .label {
+	color: var(--accent);
+    font-size: 16px;
+}
+/*POWER MENU POPUP*/
+.uptime {
+	font-size: 14px;
+	margin-bottom: 10px;
+	color: var(--text-dim);
+	font-weight: 600;
+	font-family: "Bahnschrift", Tahoma, Geneva, Verdana, sans-serif;
+}
+.power-menu-popup .button {
+	padding: 0;
+	width: 160px;
+	height: 240px;
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.04);
+	font-family: "Bahnschrift", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--text);
+	border: 4px solid rgba(255, 255, 255, 0);
+ 
+}
+.power-menu-popup .button.hover {
+	background-color: rgba(255, 255, 255, 0.08);
+	border: 4px solid rgba(255, 255, 255, 0.08);
+}
+.power-menu-popup .button .label {
+	margin-bottom: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-muted);
+	font-family: "Bahnschrift", Tahoma, Geneva, Verdana, sans-serif;
+}
+.power-menu-popup .button .icon {
+	font-size: 64px;
+	padding-top: 54px;
+	color: rgba(255, 255, 255, 0.25);
+}
+.power-menu-popup .button.cancel .icon {
+	color: var(--critical);
+}
+.power-menu-popup .button.cancel .label {
+	color: var(--critical);
+}
+.cava-widget {
+    padding: 0;
+    margin-right: 0;
+}
+/*BATTERY WIDGET*/
+.battery-widget .label {
+	font-size: 14px;
+	font-family: "Bahnschrift";
+    	font-weight: 600;
+	padding: 1 0px 0 0px;
+}
+.battery-widget .widget-container .icon.status-low {
+    color: var(--critical);
+    padding: 0 5px 0 0px;
+}
+.battery-widget .widget-container .icon.status-medium {
+    color: var(--text-muted);
+    padding: 0 5px 0 0px;
+}
+.battery-widget .widget-container .icon.status-high,
+.battery-widget .widget-container .icon.status-full,
+.battery-widget .widget-container .icon.status-charging {
+    color: var(--accent);
+    padding: 1 5px 0 0px;
+}
+
+/*APPS WIDGET*/
+.apps-widget {
+    padding: 0;
+    padding-left: -4px;
+    padding-right: -2px;
+}
+.apps-widget .label {
+	font-size: 16px;
+	padding: 0 1px;
+    color: var(--text-muted);
+}
+.apps-widget .label:hover {
+	color: var(--accent);
+}
+.apps-widget .widget-container {
+	margin: 4px 6 4px 6;
+	border-radius: 8px;
+}

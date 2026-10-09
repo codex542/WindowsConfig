@@ -1,0 +1,308 @@
+watch_stylesheet: true
+watch_config: true
+debug: false
+glazewm:
+  start_command: "glazewm.exe start"
+  stop_command: "glazewm.exe command wm-exit"
+  reload_command: "glazewm.exe command wm-exit && glazewm.exe start"
+bars:
+  primary-bar:
+    enabled: true
+    screens: ['*']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      align: "left"
+    blur_effect:
+      enabled: false
+      acrylic: false
+      dark_mode: true
+      round_corners: true
+      border_color: "None"
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions:
+      width: "100%"
+      height: 30
+    padding:
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left:
+        [
+          "home",
+          "glazewm_workspaces",
+          "media"
+        ]
+      center:
+        ["clock", "apps", "todo"]
+      right:
+        [
+          "volume",
+          "wifi",
+          "bluetooth",
+          "weather",
+          "battery",
+          "disk",
+          "power_menu"
+        ]
+widgets:
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      label: "<span>\ue62a</span>"
+      menu_list:
+      - { title: "Home", path: "~" }
+      - { title: "Downloads", path: "C:\\Users\\Downloads"}
+      - { title: "Documents", path: "C:\\Users\\Documents"}
+      - { title: "Dev", path: "D:\\dev"}
+      - { title: "Videos", path: "D:\\videos"}
+      system_menu: true
+      power_menu: false
+      blur: true
+      round_corners: true
+      round_corners_type: "normal"
+      border_color: "System"
+      distance: 5
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      alignment: "left"
+      direction: "down"
+      menu_labels:
+        shutdown: "Shutdown"
+        restart: "Restart"
+        logout: "Logout"
+        lock: "Lock"
+        sleep: "Sleep"
+        system: "System Settings"
+        about: "About This PC"
+        task_manager: "Task Manager"
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      offline_label: "GlazeWM Offline"
+      hide_if_offline: false
+      monitor_exclusive: true
+      enable_scroll_switching: true
+      app_icons:
+        enabled_populated: false
+        enabled_active: false
+        size: 16
+        max_icons: 0
+        hide_label: false
+        hide_duplicates: false
+        hide_floating: false
+  weather:
+    type: "yasb.weather.WeatherWidget"
+    options:
+      label: "<span>{icon}</span> {temp}"
+      api_key: "XXX" # Get your free API key from https://www.weatherapi.com/
+      show_alerts: true
+      update_interval: 600 # Update interval in seconds, Min 600 seconds
+      hide_decimal: true
+      units: "imperial" # Can be 'metric' or 'imperial'
+      location: "XXX" # {COUNTRY CITY ZIP_CODE} order, or just city.
+      callbacks:
+        on_left: "toggle_card"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      icons:
+        sunnyDay: "\ue30d"
+        clearNight: "\ue32b"
+        cloudyDay: "\udb81\udd99"
+        cloudyNight: "\ue311"
+        rainyDay: "\udb81\ude7e"
+        rainyNight: "\udb81\ude7e"
+        snowyDay: "\udb81\udd98"
+        snowyNight: "\udb81\udd98"
+        blizzardDay: "\uebaa"
+        blizzardNight: "\uebaa"
+        default: "\uebaa"
+      weather_card:
+        blur: True
+        round_corners: True
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        icon_size: 64
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title} - {artist}"
+      label_alt: "{title}"
+      hide_empty: true
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+      max_field_size:
+        label: 20
+        label_alt: 30
+      show_thumbnail: false
+      controls_only: false
+      controls_left: false
+      thumbnail_alpha: 80
+      thumbnail_padding: 8
+      thumbnail_corner_radius: 16
+      icons:
+        prev_track: "\udb81\udcae"
+        next_track: "\udb81\udcad"
+        play: "\udb81\udc0a"
+        pause: "\udb80\udfe4"
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      volume_icons:
+        - "\ueee8"  # Icon for muted
+        - "\uf026"  # Icon for 0-10% volume
+        - "\uf027"  # Icon for 11-30% volume
+        - "\uf027"  # Icon for 31-60% volume
+        - "\uf028"  # Icon for 61-100% volume
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      get_exact_wifi_strength: false
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span> {device_name}"
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a %b %d %I:%M}"
+      label_alt: "{%A, %d %B %Y %I:%M}"
+      timezones: []
+      calendar:
+        alignment: "center"
+  disk:
+    type: "yasb.disk.DiskWidget"
+    options:
+        label: "<span>\uf473</span>"
+        label_alt: "<span>\uf473</span>"
+        update_interval: 60
+        group_label:
+          volume_labels: ["C", "D", "E", "F"]
+          show_label_name: false
+          blur: True
+          round_corners: True
+          round_corners_type: "small"
+          border_color: "System"
+          alignment: "right"
+          direction: "down"
+          offset_top: 6
+        callbacks:
+          on_left: "toggle_group"
+          on_middle: "toggle_label"
+          on_right: "exec explorer C:\\" # Open disk C in file explorer
+  todo:
+    type: "yasb.todo.TodoWidget"
+    options:
+      label: "\uf0ae {count}/{completed}"
+      label_alt: "\uf0ae Tasks: {count}"
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+      icons:
+        add: "\uf501 New Task"
+        edit: "Edit"
+        delete: "Delete"
+        date: "\ue641"
+        category: "\uf412"
+        checked: "\udb80\udd34"
+        unchecked: "\udb80\udd30"
+        sort: "\ueab4"
+        no_tasks: "\uf4a0"
+      categories:
+        default:
+          label: "General"
+        soon:
+          label: "Complete soon"
+        today:
+          label: "End of day"
+        urgent:
+          label: "Urgent"
+        important:
+          label: "Important"
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+  power_menu:
+      type: "yasb.power_menu.PowerMenuWidget"
+      options:
+        label: "\uf011"
+        uptime: True
+        blur: False
+        blur_background: True
+        animation_duration: 250 # Milisecond
+        button_row: 5 # Number of buttons in row, min 1 max 6;
+        buttons:
+          signout: ["\udb80\udf43","Sign out"]
+          shutdown: ["\uf011","Shut Down"]
+          restart: ["\uead2","Restart"]
+          hibernate: ["\uf28e","Hibernate"]
+          cancel: ["\udb81\udf3a","Cancel"]
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span> {percent}%"
+      label_alt: " time: {time_remaining}"
+      charging_options:
+        icon_format: "{charging_icon}"
+  apps:
+    type: "yasb.applications.ApplicationsWidget"
+    options:
+      label: "{data}"
+      app_list:
+        - { icon: "\uf0a2", launch: "notification_center" }
+        - { icon: "\uf268", launch: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe" }
+        - { icon: "\uf1bc", launch: "cmd.exe /c start spotify:", name: "Spotify" }
